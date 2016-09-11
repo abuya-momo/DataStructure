@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link type="text/css" rel="stylesheet" href="../static/css/main.css"/>
+<link type="text/css" rel="stylesheet" href="../static/css/delete.css"/>
+<script type="text/javascript" src="../static/js/jquery-1.11.3.min.js"></script>
+<title>阅读计划-新建计划</title>
+<script text="text/javascript">
+</script>
+</head>
+<body>
+	<div id="bg"></div>
+	<div id="wrap">
+
+		<div id="main">
+			<h3>管理</h3>
+			<p id="newSelect">
+				<label for="">选项</label><span class="hint">(请在下面之中选择一个选项)</span>
+				<div id="newSelectList" class="selectbox">
+					<span option="1">删除电子书</span>
+					<span option="2">删除文章</span>
+					<span option="3">删除好友</span>
+					<span option="4">新增文章</span>
+				</div>
+				<input id="optionString" style="display:none" name="option">
+			</p>
+			<div id="EBookSelect">
+				<label for="">选项</label><span class="hint">(请在下面之中选择一个删除)</span>
+				<div class="EBookList selectbox"></div>
+				<input id="EBookForm" style="display:none" name="EBook">
+			</div>
+			<div id="WeixinSelect">
+				<label for="">选项</label><span class="hint">(请在下面之中选择一个删除)</span>
+				<div class="WeixinList selectbox"></div>
+				<input id="WeixinForm" style="display:none" name="weixin">
+			</div>
+			<div id="FriendSelect" style="display:none">
+				<label for="">选项</label><span class="hint">(请在下面之中选择一个删除)</span>
+				<div class="FriendList selectbox"></div>
+				<input id="FriendForm" style="display:none" name="friend">
+			</div>
+			<div id="newField" style="display:none">
+				<p><span class="articleName">标题</span><input type="text" id="newName" class="articleName"></p>
+				<p><span class="articleName">链接</span><input type="text" id="link" class="articleName"></p>
+				<textarea id="new" style="display:block;"></textarea>
+			</div>
+			<!-- <div id="editField" style="display:none">
+				<label for="">选项</label><span class="hint">(编辑区域)</span>
+				<div class="WeixinList selectbox"></div>
+				<p><span class="articleName">标题</span><input type="text" id="aName" class="articleName"></p>
+				
+				<textarea id="edit" style="display:block;"></textarea>
+				<input id="editForm" style="display:none" name="friend">
+			</div> -->
+			<p>
+				<input id="submit" type="submit" value="提交">
+			</p>
+		</div>
+	</div>
+
+<script type="text/javascript" src="../static/js/nev.js"></script>
+<script type="text/javascript" src="../static/js/main.js"></script>
+<script type="text/javascript" src="../static/js/delete.js"></script>
+</body>
+</html>

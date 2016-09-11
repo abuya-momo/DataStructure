@@ -1,0 +1,60 @@
+#main{
+	width: 800px;
+    box-shadow: 0px 1px 15px #999;
+    padding: 20px 75px 20px 75px;
+    background-color: white;
+}
+
+.block{
+    padding-bottom: 18px;
+    border-bottom: 2px dotted #ccc;
+}
+.block h2{
+	color: #2e4e7e;
+	text-align: left;
+}
+.block_para{
+	text-align: left;
+	text-indent: 32px;
+	font-size: 18px;
+	line-height: 1.8em;
+}
+.bookname{
+	text-align: right;
+}
+
+.timeago:hover{
+    background-color: #177cb0;
+    -webkit-transform: rotate3d(0, 1, 0, -360deg);
+    -ms-transform: rotate3d(0, 1, 0, -360deg);
+    transform: rotate3d(0, 1, 0, -360deg);
+}
+.timeago{
+    text-align: center;
+    color: #EFEFEF;
+    float: left;
+    margin-left: -120px;
+    margin-top: 16px;   
+    width: 80px;
+    height: 80px;
+    background-color: #0eb83a;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    vertical-align: middle;
+    font-size: 16px;
+    -webkit-transition-duration: 1s;
+    transition-duration: 1s;
+    cursor: default;
+}
+.timeago-words {
+    margin-top: 8px;
+    margin-bottom: -4px;
+    font-size: 14px;
+}
+.timeago-figure {
+    font-size: 35px;
+    font-weight: 900;
+}

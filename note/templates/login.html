@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link type="text/css" rel="stylesheet" href="../static/css/login.css"/>
+<script type="text/javascript" src="../static/js/jquery-1.11.3.min.js"></script>
+<title>阅读计划</title>
+
+<script text="text/javascript">
+
+</script>
+</head>
+<body>
+	<div id="wrap">
+		<div id="top">
+			<div id="logoBox">
+				<h1 id="logo">阅读计划</h1>
+			</div>
+		</div>
+		<div id="body_background">
+			<div id="login_border">
+					<div id="login_top">欢迎使用阅读计划</div>
+					<div id="login_body">
+						<div id="login_body_left">
+							<img id="login_logo" src="../static/img/u8.png">
+						</div>
+						<div id="login_body_right">
+                            <form name="/login/" method="post" id="formLogin">
+                                 {% csrf_token %}
+							<span id="login_name">用户名</span>
+							<input id="login_name2" type="text" name="userID" autocomplete="off" />
+							<br>
+							<span id="login_password">密&nbsp;&nbsp;&nbsp;码</span>
+							<input id="login_password2" type="password" name="password"/>
+							<input id="ok" type="button" value="登录" class="submit"/><input id="signin" type="button" value="注册" class="submit"/>
+                                </form>
+						</div>
+					</div>
+			</div>
+		</div>
+		<div id="bottom">
+				<span id="telephone">联系作者：263853614@qq.com</span>
+		</div>
+
+		<div id="bigFrame_wrap">
+			<div class="bigFrame">
+				<div id="upload">
+					<h2>新用户</h2>
+					<br>
+					<form method="POST" action="/">
+						<p>
+							<label for="">昵称</label><input class="text" type="text" id="userName" name="">
+						</p>
+						<br>
+					    <p>
+					    	<label for="">密码</label><input class="text" type="password" name="" id='newPassword'/>
+						</p>
+						<br>
+						<p id="confirmPassword">
+							<label for="">密码确认</label><input class="text" type="password" name="" id="passwordConfirmInput">
+						</p>
+						<br>
+						<p>
+							<input type="button" class="button" id="signButton" value="注册" />
+						</p>
+					</form>
+					<div id="upload_close"></div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+<script type="text/javascript" src="../static/js/main.js"></script>
+<script type="text/javascript" src="../static/js/login.js"></script>
+</body>
+</html>

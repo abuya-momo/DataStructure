@@ -1,0 +1,29 @@
+用户ID ： userID
+使用方法：GET
+
+//提交计划plan.html
+
+书名：bookName
+页数：pageNumber
+计划天数：planDayNumber
+userID: userID
+选项：option     //option = 1    bookName:BookID  pageNumber:None         pageNumber:电子书总索引    tempPageNumber：电子书当前读到索引
+
+返回一个success
+
+
+//index.html
+
+进页面的时候 往后台传
+userID :userID
+返回[书名：bookName
+书ID :bookID
+页数 :pageNumber
+当前页数 :tempPageNumber]
+
+//index.html
+更新 往后台传
+书ID :bookID
+页数 :addPageNumber
+userID: userID 
+返回一个success

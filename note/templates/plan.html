@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link type="text/css" rel="stylesheet" href="../static/css/main.css"/>
+<link type="text/css" rel="stylesheet" href="../static/css/plan.css"/>
+<script type="text/javascript" src="../static/js/jquery-1.11.3.min.js"></script>
+<title>阅读计划-新建计划</title>
+<script text="text/javascript">
+</script>
+</head>
+<body>
+	<div id="bg"></div>
+	<div id="wrap">
+
+		<div id="main">
+			<h3> 创建新的读书计划</h3>
+			<p id="newSelect">
+				<label for="">选项</label><span class="hint">(请在下面之中选择一个选项)</span>
+				<div id="newSelectList" class="selectbox">
+					<span option="1">创建电子书计划</span>
+					<span option="2">创建微信阅读计划</span>
+					<span option="3">创建纸质书计划</span>
+					<span option="4">删除计划</span>
+					<!-- <span tag="0">小说</span><span tag="1">文学</span><span tag="2">传记</span><span tag="3">艺术</span><span tag="4">成功</span><span tag="5">管理</span><span tag="6">经济</span><span tag="7">金融与投资</span><span tag="8">孕产/胎教</span><span tag="9">旅游</span><span tag="0">烹饪/美食</span><span tag="1">时尚</span><span tag="2">家居</span><span tag="13">婚恋与两性</span><span tag="14">娱乐休闲</span><span tag="15">健身与保健</span><span tag="16">历史</span><span tag="17">心理学</span><span tag="18">政治/军事</span><span tag="19">国学/古籍</span><span tag="20">哲学/宗教</span><span tag="21">法律</span><span tag="22">文化社会</span><span tag="23">自然科学</span><span tag="24">科普读物</span><span tag="25">计算机与互联网</span><span tag="26">建筑</span><span tag="27">医学</span><span tag="28">工业技术</span><span tag="29">电子与通信</span><span tag="30">农业/林业科学与自然</span><span tag="31">体育/运动</span><span tag="32">外语</span> -->
+				</div>
+				<input id="optionString" style="display:none" name="option">
+			</p>
+			<p id="bookName">
+				<label for="">书名</label><input class="text" type="text" name="bookName">
+			</p>
+			<p id="pageNumber" style="display: none;">
+				<label for="" >页数</label><input class="text" type="text" name="pageNumber">
+			</p>
+			<p id="planDayNumber">
+				<label for="">计划天数</label><input class="text" type="text" name="planDayNumber">
+			</p>
+			<div id="EBookSelect">
+				<label for="">选项</label><span class="hint">(请在下面之中选择一个选项)</span>
+				<div id="EBookList" class="selectbox">
+					<!-- <span tag="0">小说</span><span tag="1">文学</span><span tag="2">传记</span><span tag="3">艺术</span><span tag="4">成功</span><span tag="5">管理</span><span tag="6">经济</span><span tag="7">金融与投资</span><span tag="8">孕产/胎教</span><span tag="9">旅游</span><span tag="0">烹饪/美食</span><span tag="1">时尚</span><span tag="2">家居</span><span tag="13">婚恋与两性</span><span tag="14">娱乐休闲</span><span tag="15">健身与保健</span><span tag="16">历史</span><span tag="17">心理学</span><span tag="18">政治/军事</span><span tag="19">国学/古籍</span><span tag="20">哲学/宗教</span><span tag="21">法律</span><span tag="22">文化社会</span><span tag="23">自然科学</span><span tag="24">科普读物</span><span tag="25">计算机与互联网</span><span tag="26">建筑</span><span tag="27">医学</span><span tag="28">工业技术</span><span tag="29">电子与通信</span><span tag="30">农业/林业科学与自然</span><span tag="31">体育/运动</span><span tag="32">外语</span> -->
+				</div>
+				<input id="EBookForm" style="display:none" name="EBook">
+			</div>
+			<div id="WeixinSelect">
+				<label for="">选项</label><span class="hint">(请在下面之中选择一个选项)</span>
+				<div id="WeixinList" class="selectbox"></div>
+				<input id="WeixinForm" style="display:none" name="weixin">
+			</div>
+			<div id="PlanSelect">
+				<label for="">选项</label><span class="hint">(请在下面之中选择一个选项)</span>
+				<div id="PlanList" class="selectbox">
+					<!-- <span tag="0">小说</span><span tag="1">文学</span><span tag="2">传记</span><span tag="3">艺术</span><span tag="4">成功</span><span tag="5">管理</span><span tag="6">经济</span><span tag="7">金融与投资</span><span tag="8">孕产/胎教</span><span tag="9">旅游</span><span tag="0">烹饪/美食</span><span tag="1">时尚</span><span tag="2">家居</span><span tag="13">婚恋与两性</span><span tag="14">娱乐休闲</span><span tag="15">健身与保健</span><span tag="16">历史</span><span tag="17">心理学</span><span tag="18">政治/军事</span><span tag="19">国学/古籍</span><span tag="20">哲学/宗教</span><span tag="21">法律</span><span tag="31">体育/运动</span><span tag="32">外语</span> -->
+				</div>
+				<input id="PlanForm" style="display:none" name="EBook">
+			</div>
+			<p>
+				<input id="submit" type="submit" value="确定">
+			</p>
+		</div>
+	</div>
+
+<script type="text/javascript" src="../static/js/nev.js"></script>
+<script type="text/javascript" src="../static/js/main.js"></script>
+<script type="text/javascript" src="../static/js/plan.js"></script>
+</body>
+</html>

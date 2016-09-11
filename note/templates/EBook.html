@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link type="text/css" rel="stylesheet" href="../static/css/main.css"/>
+<link type="text/css" rel="stylesheet" href="../static/css/EBook.css"/>
+<script type="text/javascript" src="../static/js/jquery-1.11.3.min.js"></script>
+<title>阅读计划-电子读物</title>
+<script text="text/javascript">
+</script>
+</head>
+<body csrf="{{ csrf_token }}">
+<article class="book-reader">
+
+	<input type="checkbox" id="fullscreen">
+
+	<label for="fullscreen" id="addEBook"></label>
+
+	<header>
+	    <a href="../yun/" class="leftHeader">云空间</a>
+	    <h1><a href="#" id="EBookName">加载中</a></h1>
+	</header>
+
+	<nav>
+	    <ul>
+	    	<li><a href="###" id="memo">笔记</a></li>
+	    	<li><a href="###" id="line">添加划线</a></li>
+	    	<li><a href="###" id="lineManage">划线管理</a></li>
+	        <li><span href="###" id="pre"><---</span></li>
+	        <li><span href="###" id="next">---></span></li>
+	    </ul>
+	</nav>
+
+	<div id="processBar"><p>今日计划已完成</p><span id="planProcess">0</span>%<p></p></div>
+
+	<div id="processHint"><span id="currentIndex">0</span>/<span id="totalIndexNum"></span></div>
+  
+	<section id="s">
+		    
+	</section>
+</article>
+
+<div id="lineBox">
+	<div id="lineList">
+		
+	</div>
+	<div class="btnBox">
+		<a class="btn btn-cancel" id="lineManage_cancelButton" href="###">取消</a>
+	</div>
+</div>
+
+<div id="memoBox">
+	<h2 id="memoBox_title">读书笔记</h2>
+	<div id="memoList">
+		<!-- <div class="memoList_oneMemo">
+			<h3>开篇</h3>
+			<p>写得非常好，运用了修辞手法，很精妙啊</p>
+		</div>
+		<div class="memoList_oneMemo">
+			<h3>细节描写</h3>
+			<p>写得非常好，运用了修辞手法，很精妙啊。写得非常好，运用了修辞手法，很精妙啊写得非常好，运用了修辞手法，很精妙啊写得非常好，运用了修辞手法，很精妙啊
+			写得非常好，运用了修辞手法，很精妙啊</p>
+		</div>
+		<div class="memoList_oneMemo">
+			<h3>开篇</h3>
+			<p>写得非常好，运用了修辞手法，很精妙啊</p>
+		</div> -->
+	</div>
+	<div id="addMemoBox">
+		<p>
+			<input type="text" id="title">
+			<span id="getBeifen">恢复</span>
+		</p>
+		
+		<textarea name="" id="memoContent" cols="30" rows="10"></textarea>
+		<div class="btnBox">
+			<span id="beifen"></span>
+			<a class="btn btn-confirm" id="memo_ok" href="###">添加</a>
+			<a class="btn btn-cancel" id="memo_cancel" href="###">取消</a>
+			<a class="btn btn-getLineMassage" id="memo_getLineMassage" href="###">划线内容</a>
+		</div>
+		
+	</div>
+</div>
+
+
+
+<script type="text/javascript" src="../static/js/rangy/rangy-core.js"></script>
+<script type="text/javascript" src="../static/js/rangy/rangy-classapplier.js"></script>
+<script type="text/javascript" src="../static/js/rangy/rangy-highlighter.js"></script>
+<script type="text/javascript" src="../static/js/main.js"></script>
+<script type="text/javascript" src="../static/js/queueOfArray.js"></script>
+<script type="text/javascript" src="../static/js/llist.js"></script>
+<script type="text/javascript" src="../static/js/EBookLine.js"></script>
+<script type="text/javascript" src="../static/js/EBook.js"></script>
+<script type="text/javascript" src="../static/js/EBookMemo.js"></script>
+<script type="text/javascript" src="../static/js/EBookPlan.js"></script>
+<script type="text/javascript">
+function loadLineBox(){//加载划线框
+	$('#lineList').empty();//将列表清空
+	var tempIndex = 0;//存储上一个划线的开始位置，如果重复就说明跨段
+	$('a.lineP').each(function(index){
+		if( $(this).attr('line') == tempIndex){//说明跨段
+			console.log($(this).attr('line')+'跨段')
+			return true;
+		}
+		console.log($(this).attr('line'))
+		console.log($('a[line='+ $(this).attr('line') +']').length+'length')
+		if($(this).text().trim() != ''){
+			$('#lineList').append("<div class='memoList_oneMemo'>\
+				<h3><span class='lintitle'>"+ $(this).attr('line') +"</span><span class='deleteLine' iindex='"+ $(this).attr('line')  +"'>删除</span></h3>\
+				<p>"+ $('a[line='+ $(this).attr('line') +']').text() +"</p>\
+			</div>\
+				")
+			tempIndex = $(this).attr('line');
+		}
+	});
+	//绑定事件
+	$('.lintitle').click(function(){
+		$('#s').get(0).scrollTop = $('a[line='+ $(this).text() +']').get(0).offsetTop;
+	});
+	$('.deleteLine').click(function(){
+		$('a[line='+ $(this).attr('iindex') +']').removeClass('lineP');
+		var $parent = $(this).parent().parent('.memoList_oneMemo');
+		$.ajax({//服务器删除划线
+			data:{
+				bookID: bookID,
+				userID: userID,
+				start: $(this).attr('iindex')
+			},
+			type:'get',
+			url: "../deleteLine/",
+			dataType: "json",
+			async: false,
+			success:  function(data){
+				$parent.empty();
+				alert('删除划线成功');
+			}
+		});
+	});
+}
+
+// 
+
+var italicYellowBgApplier;
+
+function toggleItalicYellowBg() {
+	if(!rangy.getSelection().anchorNode){
+		alert('创建划线失败了');
+		return false;
+	}
+	var start = Number(rangy.getSelection().anchorNode.parentNode.attributes[0].nodeValue);
+	var over = Number(rangy.getSelection().focusNode.parentNode.attributes[0].nodeValue);
+	if(start == over){
+		alert('创建划线失败');
+		return false;
+	}
+
+	var currentNode = llist.findIndex(start);//找到开始所在的段落
+	var index = currentNode.indexOfPara;//段落的索引
+	var endNode = llist.findIndex(over);//找到结束所在的段落
+	var endIndex = currentNode.indexOfPara;//段落的索引
+	if(index != endIndex){//跨段，要拆成两段
+
+	}
+
+	createLine(start, over, index, endIndex);
+
+    italicYellowBgApplier.toggleSelection();
+
+    loadLineBox();
+}
+
+$(document).ready(function(){
+	rangy.init();
+    var classApplierModule = rangy.modules.ClassApplier;
+
+    if (rangy.supported && classApplierModule && classApplierModule.supported) {
+        italicYellowBgApplier = rangy.createClassApplier("lineP", {
+            tagNames: ["span", "a", "b", "img"]
+        });
+
+        var toggleBoldRedButton = $("#line").get(0);
+        toggleBoldRedButton.disabled = false;
+        toggleBoldRedButton.ontouchstart = toggleBoldRedButton.onmousedown = function() {
+            toggleItalicYellowBg();
+            return false;
+        };
+    }
+});
+
+function createLine(start, over, paraIndex, endParaIndex){//传入服务器
+	
+	$.ajax({
+		data:{
+			userID: userID,
+			EBookID: bookID,
+			paraIndex: paraIndex,
+			endParaIndex: endParaIndex,
+			start: start,
+			over: over
+		},
+		type:'get',
+		url: "../createLine/",
+		dataType: "json",
+		success:  function(data){
+			alert('创建划线'+data)
+		}
+	});
+}
+
+//划线框的实现
+$('#lineManage').click(function(){//点击划线管理后
+	/*重新加载S
+	  要先记录下来当前的scrollTop
+	  取得划线
+	  然后清空DOM
+	  然后获得0到maxIndex的P
+	  重新生成DOM
+	  scrollTop还原
+	*/
+	var nowScrollTop = document.getElementById('s').scrollTop;
+
+	lineArray = [];//划线相关
+	lineArrayIndex = 0;//正向的时候用
+	lineArrayIndexF = 0;//反向的时候用
+	nowParaLine = [];
+
+	$.ajax({//取得划线
+		data:{
+			EBookID: bookID,
+			userID: userID,
+		},
+		type:'get',
+		url: "../getLine/",
+		dataType: "json",
+		async: false,
+		success:  function(data){
+			for (var i = 0; i < data.length; i++) {
+				lineArray.push(data[i]);
+			}
+		}
+	});
+
+	$('#s').empty();
+	PDirctionLoad(0, all.maxIndex);
+	document.getElementById('s').scrollTop = nowScrollTop;
+	/*DOM重构完成*/
+
+	loadLineBox();
+});
+
+
+</script>
+</body>
+</html>

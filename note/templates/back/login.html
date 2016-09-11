@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link type="text/css" rel="stylesheet" href="../static/css/login.css"/>
+<script type="text/javascript" src="../static/js/jquery-1.11.3.min.js"></script>
+<title>收藏计划</title>
+<!--当鼠标经过文字提示时，图片显示，经过后，图片一直显示
+									也可以设置为经过后，图片便不再显示-->
+<script text="text/javascript">
+	function show()
+	{
+		document.getElementById("weixin_hide").style.display="block";
+	}
+	/*
+	function hide()
+	{
+		document.getElementById("weixin_hide").style.display="none";
+	}*/
+</script>
+</head>
+<body>
+	<div id="wrap">
+		<div id="top" background-image="../static/img/u25.png">
+			<div id="logoBox">
+				<img id="logoBackgroundImg" src="../static/img/u21.png">
+				<img id="logo" src="../static/img/u23.png">
+			</div>
+		</div>
+		<div id="body_background">
+			<div id="login_border">
+					<div id="login_top">欢迎使用收藏计划</div>
+					<div id="login_body">
+						<div id="login_body_left">
+							<img id="login_logo" src="../static/img/u8.png">
+						</div>
+						<div id="login_body_right">
+                            <form name="/login/" method="post">
+                                 {% csrf_token %}
+							<span id="login_name">用户名</span>
+							<!--value:框内提示内容
+								name:对提交到服务器后的表单数据进行标识
+								onfocus:文本框获得焦点时发生
+								onblur文本框失去焦点时发生-->
+							<input id="login_name2" type="text" name="userID"/>
+							<br>
+							<span id="login_password">密&nbsp;&nbsp;&nbsp;码</span>
+							<!--value:框内提示内容
+								name:对提交到服务器后的表单数据进行标识
+								onfocus:文本框获得焦点时发生
+								onblur文本框失去焦点时发生-->
+							<input id="login_password2" type="text" name="password"/>
+							<input id="ok" type="submit" value="登录" class="submit"/>
+                                </form>
+						</div>
+					</div>
+			</div>
+		</div>
+		<div id="bottom">
+				<span id="telephone">联系我们：263855555@qq.com</span>
+				<img id="weixin_hide" src="../static/img/loginpage_image_qrcode .jpg" >
+				<img id="weixin_logo" src="../static/img/u31.png">
+				<span id="weixin" onmouseover="show()">微信号&nbsp;ffhcom</span>
+		</div>
+	</div>
+</body>
+</html>

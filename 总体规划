@@ -1,0 +1,157 @@
+文件管理：与微信有关的先不做
+
+bookIndex.txt   保存创建的计划信息
+
+acount.txt(+微信ID)
+userData
+	10001
+		1.朋友列表
+		2.所有书的列表
+		3.我的文件列表 (myFileList.txt){EBookID}
+		4.我的链接列表(ID,链接) 
+		计划plan
+			书的每一次更新
+			电子书的每一次更新(索引)
+		笔记
+			书ID文件夹
+				好多笔记文件.txt
+				lineIndex.txt(开始，结束)
+			笔记index(内容：创建时间戳，笔记标题，书ID，偏移量开始，结束)(//笔记编号，通过偏移量区分划线笔记和普通笔记)
+		链接
+			每个连接爬虫结果.txt
+book.txt(EBookID，书名)
+book(存文件)
+
+
+后端注意事项：
+	1.电子书的ID前边带E
+	2.去掉书的类别(要改动plan)
+	3.电子书的plan文件夹的文件存的是总索引(总页数)，当前索引
+	4.删除个人简介
+	5.前端传到后端的是读到了多少页，但是后端要存今天读了多少页，每一天对应一行
+
+前端注意事项
+	1.划线的实现：
+		前端获取划线处段落的索引，划线处的偏移量，书的ID，  传到后端。
+
+
+
+
+前端页面：
+	A注册
+	A首页改一改
+		1.updatePlan更新进度()  
+	A上传/新建/链接
+			★1 uploadFile上传文件:post(userID,EBookName)返回(success)   //修改  //finish
+	A文件资源列表 
+			★2.getFileList获取文件列表：(userID)返回()           //finish
+				3.getLinkList获取链接列表：(userID)返回()
+				//4.getWeixinList获取微信列表：(userID)返回()
+	A好友
+	
+	A查看电子书/微信☆
+
+//提交计划plan.html           savePlanInfor(userID,bookName,pageNumber,planDayNumber,option,tempPageNumber)
+
+书名：bookName
+页数：pageNumber
+计划天数：planDayNumber
+userID: userID
+选项：option     //option = 1    bookName:BookID  pageNumber:None         pageNumber:电子书总索引    tempPageNumber：电子书当前读到索引
+
+返回一个success
+
+
+//index.html
+
+进页面的时候 往后台传
+userID :userID
+返回[书名：bookName
+书ID :bookID
+页数 :pageNumber
+当前页数 :tempPageNumber]
+
+//index.html
+更新 往后台传
+书ID :bookID
+页数 :addPageNumber
+userID: userID 
+返回一个success
+
+
+
+			setEBookPlan(EBookID,)   
+
+		★1.getEbookContent获取电子书内容(userID，EBookID，t，nowIndex)(如果t为1，就从myFileList.txt 或 weiXinLink.txt中读出来当前索引   否则按照索引返回加一段的)返回([{index:6668,c:"dubvbdvirpor"},{index:6760,c:"2eedubvbdvirpor"}],newIndex:25615)  
+
+			2.updatePlan更新进度(和首页的更新用一样的接口) (add EBook update index   oldIndex)  GET --> POST    //finish  电子书部分有修改
+
+		  3.createMemo创建笔记(userID,BookID,title,noteContent,[start,over])   //finish   
+
+		  4.getAllMemo读取本书所有笔记(userID,BookID)  //return [{'createTime':createTime,'title':title,'noteContent':noteContent}]  //finish 
+
+	  ★5.createLine  创建划线(userID，EBookID，paraIndex,endParaIndex,start，over)返回(success) //finish
+
+	  ★6.getLine获取所有划线(userID，EBookID)  --> paraIndex,start，over   //finish
+
+	  7.getPreEBookContent(userID，EBookID，t，nowIndex)  往回翻页   返回：与获取电子书内容一样   //finish   修改后 从0开始  -->totalIndex
+
+	  8.保存临时笔记 saveTempNote(userID,title,noteContent)    返回success      //finish
+
+	  9.获取临时笔记 getTempNote(userID)  返回  title,noteContent            //finish
+
+
+
+6.17后台新加功能
+
+	1.用户注册    后台生成用户ID ，返回给前台，用户填写密码，前台传输（userID,password） 给后台
+		createUserID()  --> 生成userID             //finish 
+		register(userID,password,userName)  -->success      //finish
+	2.好友功能
+		添加好友   addFriend(userID,friendID)        //finish
+		删除好友   delFriend(userID,friendID)
+		获取好友列表   getFriendList(userID)   --> 返回 friendID,friendName   //finish
+		搜索好友     searchFriends(string)     --> 返回  userID,userName      //finish
+
+
+		获取我的电子书列表  getMyFileList(userID)      resourceID,resourceName    //finish
+		保存微信链接    saveWeixinLink(userID,linkName,link)   -->success      //finish    
+		获取微信链接    getWeixinLink(userID)               --> resourceID,resourceName,link    //finish
+
+		//获取链接内容    savaLinkContent
+
+		分享电子书或其他资源 ： setShare(userID,resourceID)  -->success     //finish
+
+		获取分享内容  getShareContent(userID)    --> EBookID,EBookName,shareTime   //finish
+		收藏好友分享   collectContent(userID,resourceID)    -->success         //finish
+
+
+
+//创建计划：   savePlanInfor(userID,bookName,pageNumber,planDayNumber,option)
+
+更新电子书包括微信链接内容进度，进度信息在  myFileList中：   updateSchedule(userID,bookID,schedule) -->success        //finish  schedule为增加的索引长度，相当于addPageNumber
+
+
+删除功能：
+
+	1.删除好友   deleteFriend(userID,ID)     -->success        //finish
+	2.删除收藏内容或资源   deleteCollect(userID,ID)    -->success     //finish 
+	3.删除笔记     deleteNote(userID,createTime,bookID)  -->success    //finish
+	4.删除计划     deletePlan(userID,ID)      -->success       //finish
+	5.删除划线     deleteLine(userID,start,bookID)
+
+统计：   getAllPlan(userID)  -->bookID,bookName,plan[updateDay,pageNumber,planDayNumber,tempPageNumber,option]
+
+编辑：   create.py
+	  //getWeiXinContent(userID)
+	   //changeWeiXinContent(userID,articleName,content,resourceID)
+	createWeiXin(userID,articleName,content)   --> success      后台创建文章ID  W*
+
+
+
+微信相关：
+
+
+
+getUserAllMemo(userID)  -->   [{bookID，bookName，memoContent[{title,noteContent,createTime}]}] 
+	

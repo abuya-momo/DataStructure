@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link type="text/css" rel="stylesheet" href="../static/css/main.css"/>
+<link type="text/css" rel="stylesheet" href="../static/css/yun.css"/>
+<script type="text/javascript" src="../static/js/jquery-1.11.3.min.js"></script>
+<title>阅读计划-云空间</title>
+<script text="text/javascript">
+</script>
+</head>
+<body>
+	<div id="bg"></div>
+	<div id="wrap">
+
+		<div id="main">
+			
+			<div class="block">
+				<h2>我的电子书 <a href="###" class="uploadLink" id="uploadLink_EBook">上传+</a></h2>
+				<p id="EBookList" class="list">
+					<!-- <a href="###" class="EBook_link"><img src="../static/img/book-icon.png" alt="" class="EBook_link_img"><span class="EBook_link_title">盗墓笔记</span></a>
+					<a href="###" class="EBook_link"><img src="../static/img/book-icon.png" alt="" class="EBook_link_img"><span class="EBook_link_title">盗墓笔记</span></a>-->
+				</p>
+			</div>
+
+			<div class="block">
+				<h2>我的文章收藏 <a href="###" class="uploadLink" id="uploadLink_weixin">上传+</a></h2>
+				<p id="WeixinList" class="list">
+					<!-- <a href="###" class="EBook_link"><img src="../static/img/weixin.png" alt="" class="Weixin_link_img"><span class="EBook_link_title">路漫漫之阿君</span></a>
+					<a href="###" class="EBook_link"><img src="../static/img/weixin.png" alt="" class="Weixin_link_img"><span class="EBook_link_title">盗墓笔记</span></a>
+					<a href="###" class="EBook_link"><img src="../static/img/weixin.png" alt="" class="Weixin_link_img"><span class="EBook_link_title">盗墓笔记</span></a>
+					<a href="###" class="EBook_link"><img src="../static/img/weixin.png" alt="" class="Weixin_link_img"><span class="EBook_link_title">盗墓笔记</span></a> -->
+				</p>
+			</div>
+
+			<div class="block" id="upload_weixin">
+				<h2>微信上传</h2>
+				<br>
+				<p>
+					<label for="">链接地址</label><input  type="text" id="weixinLink">
+				</p><br>
+				<p>
+					<label for="">文章标题</label><input type="text"  id="weixinTitle" />
+				</p><br>
+				<p>
+					<textarea  id="weixinZhengwen"></textarea>
+				</p><br><br><br>
+				<p>
+					<input type="submit" class="button" value="添加" id="addWeixin" />
+				</p>
+				<input type="hidden" name="userID"/>
+			</div>
+
+		</div>
+
+		<div id="bigFrame_wrap">
+			<div class="bigFrame">
+				<div class="upload">
+					<div id="upload_EBook">
+						<h2>上传文件</h2>
+						<br>
+						<form enctype="multipart/form-data" method="POST" action="/uploadBook/">
+							<p>
+								<label for="">书名</label><input class="text" type="text" name="bookName">
+							</p>{% csrf_token %}
+							<br><br>
+						    <p>
+						    	<a href="" class="a-upload">选择文件<input type="file" class="file" name="file"/></a>
+							</p>
+							<p id="fileUrl">
+								
+							</p>
+							<p>
+								<input type="submit" class="button" value="上传文件" id="uploadButton" />
+							</p>
+						    <input type="hidden" name="userID"/>
+						</form>
+					</div>
+					
+					<div id="upload_other">
+						<h2>添加链接</h2>
+						<br>
+						<p>
+							<label for="">名称</label><input class="text" type="text" name="bookName">
+						</p>
+						<br><br>
+						<p>
+							<label for="">链接地址</label><input class="text" type="text" name="bookName">
+						</p><br><br> 
+						<p>
+							<input type="submit" class="button" value="添加" />
+						</p>
+						<input type="hidden" name="userID"/>
+					</div>
+					<div id="upload_close"></div>
+				</div>
+				
+
+			</div>
+		</div>
+		
+	</div>
+
+<script type="text/javascript" src="../static/js/main.js"></script>
+<script type="text/javascript" src="../static/js/nev.js"></script>
+<script type="text/javascript" src="../static/js/yun.js"></script>
+<script text="text/javascript">
+
+</script>
+</body>
+</html>

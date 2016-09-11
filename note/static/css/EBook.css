@@ -1,0 +1,487 @@
+@charset "utf-8";
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Microsoft YaHei", sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 1.75em;
+    background: url(../img/bg/001.jpg) repeat center center;
+}
+
+.book-reader header, .book-reader nav {
+    user-select: none;
+}
+
+.book-reader header {
+	position: fixed;
+    width: 100%;
+    height: 3.5em;
+    -moz-box-shadow: 0 0.25em rgba(0, 0, 0, 0.2), inset 0 -1px rgba(0, 0, 0, 0.6), inset 0 -2px rgba(255, 255, 255, 0.15);
+    -webkit-box-shadow: 0 0.25em rgba(0, 0, 0, 0.2), inset 0 -1px rgba(0, 0, 0, 0.6), inset 0 -2px rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0.25em rgba(0, 0, 0, 0.2), inset 0 -1px rgba(0, 0, 0, 0.6), inset 0 -2px rgba(255, 255, 255, 0.15);
+    background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 99%);
+    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 99%);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 99%);
+    z-index: 99;
+    background-color: #555;
+}
+
+.book-reader header a {
+    line-height: 3.5em;
+    text-decoration: none;
+    display: inline-block;
+    color: #ccc;
+}
+
+.book-reader header a:hover {
+    color: white;
+}
+
+.book-reader header h1 {
+    position: absolute;
+    top: 0;
+    text-align: center;
+    font-weight: 600;
+    width: 100%;
+    font-size: 1.16667em;
+    line-height: 1.75em;
+}
+
+.book-reader header h1 a {
+    padding: 0 1em;
+    line-height: 1.75em;
+    display: inline;
+    z-index: 9;
+    box-shadow: none;
+    font-size: 18px;
+}
+
+.book-reader header a.leftHeader {
+    z-index: 9;
+    position: relative;
+    -moz-box-shadow: inset -1px 0 rgba(255, 255, 255, 0.2), inset -2px 0 rgba(0, 0, 0, 0.24);
+    -webkit-box-shadow: inset -1px 0 rgba(255, 255, 255, 0.2), inset -2px 0 rgba(0, 0, 0, 0.24);
+    box-shadow: inset -1px 0 rgba(255, 255, 255, 0.2), inset -2px 0 rgba(0, 0, 0, 0.24);
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.13);
+    display: block;
+    width: 8em;
+}
+
+.book-reader header a[href="#home"]:hover {
+    color: white;
+}
+
+.book-reader nav {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: table;
+    padding: 0;
+    height: 3.5em;
+    line-height: 3.5em;
+    background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 100%);
+    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 100%);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.2) 100%);
+    background-color: #ddd;
+    -moz-box-shadow: 0 -0.2em rgba(0, 0, 0, 0.2), 0 -1px rgba(0, 0, 0, 0.16), inset 0 1px rgba(255, 255, 255, 0.3);
+    -webkit-box-shadow: 0 -0.2em rgba(0, 0, 0, 0.2), 0 -1px rgba(0, 0, 0, 0.16), inset 0 1px rgba(255, 255, 255, 0.3);
+    box-shadow: 0 -0.2em rgba(0, 0, 0, 0.2), 0 -1px rgba(0, 0, 0, 0.16), inset 0 1px rgba(255, 255, 255, 0.3);
+    color: white;
+    z-index: 8;
+}
+
+.book-reader nav ul {
+    display: table-row;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.book-reader nav ul li {
+    display: table-cell;
+    width: 100px;
+}
+
+.book-reader nav ul li a {
+    color: #333;
+    text-shadow: 0 1px rgba(255, 255, 255, 0.1);
+    text-decoration: none;
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.book-reader nav ul li a:hover {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.book-reader header, .book-reader nav {
+    transition: all .2s ease;
+    -webkit-transform: translate3d(0, 0, 0);
+}
+
+.book-reader section {
+    /*transition: all .13s ease;*/
+    background-color: #fafafa;
+    text-shadow: 0 1px #fff;
+    position: absolute;
+    top: 3.5em;
+    bottom: 0;
+    left: 50%;
+    margin-left: -500px;
+    padding: 1.5em 11em;
+    overflow: scroll;
+    width: 1000px;
+    -moz-box-shadow: 0 0 1em rgba(0, 0, 0, 0.4);
+    -webkit-box-shadow: 0 0 1em rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0.4);
+    background: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, #efefef), color-stop(9%, #fafafa), color-stop(91%, #fafafa), color-stop(100%, #efefef));
+    background: -moz-linear-gradient(left, #efefef 0%, #fafafa 9%, #fafafa 91%, #efefef 100%);
+    background: -webkit-linear-gradient(left, #efefef 0%, #fafafa 9%, #fafafa 91%, #efefef 100%);
+/*    background: linear-gradient(to right, #efefef 0%, #fafafa 9%, #fafafa 91%, #efefef 100%);*/
+}
+.book-reader section .page {
+  max-width: 40em;
+  margin: 1.75em auto;
+}
+.book-reader section p {
+  margin: 1.75em auto;
+  color: #868686;
+  text-indent: 36px;
+  font-size: 18px;
+  line-height: 1.9em;
+  text-align: justify;
+}
+.book-reader section h1 {
+  font-size: 2.625em;
+  color: #555;
+  line-height: 1.75em;
+  font-weight: 300;
+}
+.book-reader img {
+  padding: 1em;
+  background-color: white;
+  box-shadow: 0 0.2em 0.5em rgba(0, 0, 0, 0.2);
+  width: 100%;
+}
+.book-reader a {
+  transition: all .15s ease;
+  -moz-box-shadow: inset -1px 0 rgba(255, 255, 255, 0.2), inset 1px 0 rgba(0, 0, 0, 0.12);
+  -webkit-box-shadow: inset -1px 0 rgba(255, 255, 255, 0.2), inset 1px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: inset -1px 0 rgba(255, 255, 255, 0.2), inset 1px 0 rgba(0, 0, 0, 0.12);
+}
+.book-reader a, .book-reader label, .book-reader input {
+  -webkit-tap-highlight-color: transparent;
+  outline: 0;
+}
+.book-reader nav, .book-reader header {
+  -webkit-transform: translate3d(0, 0, 0);
+}
+.book-reader nav label, .book-reader nav a, .book-reader header label, .book-reader header a {
+  -webkit-transform: translate3d(0, 0, 0);
+}
+
+label[for="fullscreen"], label[for="invert"] {
+  transition: all .2s ease;
+  background-color: rgba(255, 255, 255, 0.05);
+  position: absolute;
+  top: 0;
+  right: 0%;
+  text-align: center;
+  padding: 0 2em;
+  z-index: 100;
+  color: #aaa;
+  height: 3.5em;
+  cursor: pointer;
+  width: 11em;
+  line-height: 3.5em;
+  user-select: none;
+  -moz-box-shadow: inset 1px 0 rgba(255, 255, 255, 0.2), inset 2px 0 rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: inset 1px 0 rgba(255, 255, 255, 0.2), inset 2px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: inset 1px 0 rgba(255, 255, 255, 0.2), inset 2px 0 rgba(0, 0, 0, 0.2);
+}
+label[for="fullscreen"]:hover, label[for="invert"]:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+#fullscreen {
+  position: absolute;
+  top: 0;
+  z-index: -1;
+  opacity: 0;
+}
+
+/*label[for="invert"] {
+  right: 11em;
+  width: 6em;
+}*/
+
+/*#invert {
+  position: absolute;
+  top: 2em;
+  z-index: -1;
+  opacity: 0;
+}*/
+
+label[for="fullscreen"]:before {
+  content: "添加到云空间";
+}
+
+/*label[for="invert"]:before {
+  content: "night";
+}*/
+
+/*small size hack*/
+@media (max-width: 50em), (max-height: 25em) {
+  body {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 30em) {
+  .book-reader header h1 {
+    display: none;
+  }
+  .book-reader header a[href="#home"] {
+    padding: 0;
+    width: 5em;
+  }
+}
+
+
+
+/*pzh*/
+#memoBox{
+    display: none;
+    position: fixed;
+    bottom: 60px;
+    right: -31.4%;
+    width: 31.4%;
+    background-color: white;
+    background: -webkit-linear-gradient(left, #efefef 0%, #fafafa 9%, #fafafa 91%, #efefef 100%);
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0.4);
+    background: #f9f8f5;
+    border: 1px solid #b3aead;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    outline: 0;
+    z-index: 101;
+    height: 85%;
+}
+
+#addMemoBox{
+    overflow: hidden;
+    height: 38.4%;
+    position: relative;
+    border-top: 2px dotted #ccc;
+}
+
+#memoBox textarea{
+    position: absolute;
+    top: 15%;
+    left: 5%;
+    width: 90%;
+    height: 70%;
+    font-size: 14px;
+    padding: 10px;
+    border: 1px solid #b3aead;
+    outline: 0!important;
+    line-height: 26px;
+}
+.btnBox{
+    position: absolute;
+    bottom: 5px;
+    height: 36px;
+    width: 100%;
+    padding: 0 30px 20px 30px;
+    text-align: left;
+}
+.btn{
+    width: 80px;
+    height: 32px;
+    line-height: 32px;
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 400;
+    font-size: 14px;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    white-space: nowrap;
+    text-decoration: none;
+    box-sizing: content-box;
+
+    -webkit-transition: color .2s,background-color .2s,border-color .2s;
+    -moz-transition: color .2s,background-color .2s,border-color .2s;
+    -ms-transition: color .2s,background-color .2s,border-color .2s;
+    -o-transition: color .2s,background-color .2s,border-color .2s;
+    transition: color .2s,background-color .2s,border-color .2s;
+
+    transition: none;
+}
+.btn-confirm:hover{
+    background-color: #60BF63;
+    border-color: #47ad4b #60BF63 #60BF63
+}
+
+.btn-confirm{
+    float: right;
+    margin-left: 16px;
+    color: #fff;
+    background-color: #53B856;
+    border-color: #36A13B #53b856 #53b856;
+}
+.btn-cancel{
+    float: right;
+    color: #333;
+    background-color: #fff;
+    border-color: #BFBFBF;
+}
+.btn-cancel:hover{
+    color: #2F9B34;
+    background-color: #FFF;
+    border-color: #BFBFBF
+}
+.btn-getLineMassage{
+    float: right;
+    margin-right: 16px;
+    color: #fff;
+    background-color: #53B856;
+    border-color: #36A13B #53b856 #53b856;
+}
+
+#title{
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    width: 300px;
+    height: 25px;
+    padding-left: 16px; 
+    font-size: 14px;
+    outline: 0!important;
+}
+
+
+#memoList{
+    height: 54%;
+    padding: 0px 20px 0px 30px;
+    overflow: auto;
+    text-align: left;
+}
+#memoBox_title{
+    position: relative;
+    height: 8.1%;
+    color: #1f3134;
+    z-index: 100;
+    text-align: left;
+    margin: 0px;
+    padding: 20px 10px;
+    border-bottom: 1px solid #ccc;
+}
+#memoList h3{
+    color: #5b7e91;
+}
+#memoList h3 .editMemo,#memoList h3 .deleteMemo{
+    font-size: 14px; 
+    color: #aaa;
+}
+.deleteMemo{
+  margin-left: 20px;
+}
+.memoList_oneMemo{
+    text-align: left;
+    border-bottom: 2px dotted #ccc;
+}
+#getBeifen{
+    position: relative;
+    left: 60px;
+    cursor: pointer;
+}
+#beifen{
+    position: relative;
+    color: #ccc;
+}
+
+
+/*进度条(计划)*/
+#processBar{
+    position: fixed;
+    bottom: 0px;
+    height: 100px;
+    background-color: #fff;
+    width: 150px;
+    z-index: 9000;
+    border-top-right-radius: 10px;
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0.4);
+    font-size: 18px;
+    color: #777;
+}
+#processBar span{
+    font-size: 24px;
+    color: #cb3a56;
+}
+
+/*进度条(读书进度)*/
+#processHint{
+    position: fixed;
+    bottom: 2px;
+    left: 50%;
+    margin-left: -500px;
+    height: 30px;
+    width: 1000px;
+    box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.3);
+    font-size: 18px;
+    line-height: 30px;
+    color: #777;
+    background-color: #eee;
+    z-index: 7;
+}
+
+
+.lineP{
+    display: inline;
+    background-color: #fff143;
+}
+#lineList{
+    padding: 0px 20px 0px 30px;
+    overflow: auto;
+    text-align: left;
+    height: 93%;
+    border-bottom: 2px solid #725e82; 
+}
+#lineBox{
+    position: fixed;
+    bottom: 60px;
+    right: -31.4%;
+    width: 31.4%;
+    background-color: white;
+    background: -webkit-linear-gradient(left, #efefef 0%, #fafafa 9%, #fafafa 91%, #efefef 100%);
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0.4);
+    background: #f9f8f5;
+    border: 1px solid #b3aead;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    outline: 0;
+    z-index: 101;
+    height: 85%;
+}
+#lineBox h3 .deleteLine{
+    font-size: 14px;
+    color: #aaa;
+    margin-left: 15px;
+}
+.lintitle{
+  cursor: pointer;
+}
